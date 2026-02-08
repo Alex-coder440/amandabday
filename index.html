@@ -17,14 +17,15 @@
     }
 
     body {
-      height: 100vh;
+      min-height: 100vh;
       background: linear-gradient(135deg, #e6ccff, #f5e6ff);
-      overflow: hidden;
+      overflow-x: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       color: #4b2e83;
+      padding: 20px;
     }
 
     .container {
@@ -36,7 +37,8 @@
       border-radius: 25px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
       max-width: 700px;
-      animation: fadeIn 2s ease;
+      width: 100%;
+      animation: fadeIn 1.5s ease;
     }
 
     h1 {
@@ -102,15 +104,18 @@
       border-radius: 15px;
       object-fit: cover;
     }
-    
-      </style>
+
+    video {
+      display: block;
+    }
+  </style>
 </head>
 <body>
 
   <!-- MUSIC -->
   <audio id="music" autoplay loop>
-    <!-- Replace birthday.mp3 with downloaded Birthday by Katy Perry -->
     <source src="birthday.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
   </audio>
 
   <!-- SCREEN 1 -->
@@ -124,14 +129,12 @@
   <div class="container hidden" id="screen2">
     <h1>💌</h1>
     <p>
-      You’re one of those people that are just so fun to be around…
-      funny without trying, calm without forcing it.
-      <br><br>
-      The kind of person that can reply "exactly" to anything somehow still make it iconic.
-      <br><br>
-      I hope today is filled with alot of movies, alot of sleep,
-      shawarma cravings(Like Mahd), and vanilla ice cream with Oreos "I still remember😅".
-    </p>	
+      You’re one of those people that are just so fun to be around…<br>
+      funny without trying, calm without forcing it.<br><br>
+      The kind of person that can reply "exactly" to anything and somehow still make it iconic.<br><br>
+      I hope today is filled with a lot of movies, a lot of sleep,
+      shawarma cravings (Like Mahd), and vanilla ice cream with Oreos "I still remember😅".
+    </p>  
     <button onclick="nextScreen(3)">There’s More 👀</button>
   </div>
 
@@ -142,9 +145,9 @@
 
     <div class="gallery">
       <!-- REPLACE WITH HER PHOTOS/VIDEOS -->
-      <img src="photo1.jpg">
-      <img src="photo2.jpg">
-      <video src="video1.mp4" autoplay loop muted></video>
+      <img src="photo1.jpg" alt="Birthday photo 1">
+      <img src="photo2.jpg" alt="Birthday photo 2">
+      <video src="video1.mp4" autoplay loop muted playsinline></video>
     </div>
 
     <button onclick="nextScreen(4)">Final Message ✨</button>
@@ -154,47 +157,30 @@
   <div class="container hidden" id="screen4">
     <h1>Final Birthday Unlock 🎂</h1>
     <p>
-      So ummm…
-      <br>
-      I didn’t want your birthday to just be another message.
-      I wanted it to feel… intentional.
-      Honestly I'm not so good at poems
-      but anyhow, here it goes
-      <br><br>
-      <b>✍️</b>
-      <br>
+      So ummm…<br>
+      I didn’t want your birthday to just be another message.<br>
+      I wanted it to feel… intentional.<br>
+      Honestly I'm not so good at poems but anyhow, here it goes<br><br>
+
+      <b>✍️</b><br>
       <i>
-      Today is the day a girl was born,
-        <br>
-with stars for eyes and skin like the sun
-        <br>
-Didn't need glasses at first, but later got one
-        <br>
-And she's still pretty with or without it
-        <br><br>
-She's another year older, another guile
-        <br>
-Still lighting up rooms with her contagious smile
-        <br>
-What makes today special isn't February the ninth
-        <br>
-But the fact you were born that very night.
-        <br>
-The world is quite lucky you arrived
-        <br><br>
-As Birthday candles flicker and your wishes take flight
-        <br>
-May laughter and love fill you tonight.
-        <br>
-May every dream find its way to you
-        <br>
-And every moment shine bright and true.
-      <br><br>
-      Happy Birthday 💜
+        Today is the day a girl was born,<br>
+        with stars for eyes and skin like the sun.<br>
+        Didn't need glasses at first, but later got one.<br>
+        And she's still pretty with or without it.<br><br>
+        She's another year older, another guile,<br>
+        Still lighting up rooms with her contagious smile.<br>
+        What makes today special isn't February the ninth,<br>
+        But the fact you were born that very night.<br>
+        The world is quite lucky you arrived.<br><br>
+        As birthday candles flicker and your wishes take flight,<br>
+        May laughter and love fill you tonight.<br>
+        May every dream find its way to you,<br>
+        And every moment shine bright and true.<br><br>
+        Happy Birthday 💜
       </i>
     </p>
   </div>
-  
 
   <script>
     function nextScreen(screenNumber) {
@@ -212,7 +198,7 @@ And every moment shine bright and true.
       for (let i = 0; i < 30; i++) {
         const el = document.createElement('div');
         el.classList.add('float');
-        el.innerHTML = icons[Math.floor(Math.random()*icons.length)];
+        el.innerHTML = icons[Math.floor(Math.random() * icons.length)];
         el.style.left = Math.random() * 100 + 'vw';
         el.style.animationDuration = (4 + Math.random() * 4) + 's';
         document.body.appendChild(el);
@@ -224,5 +210,3 @@ And every moment shine bright and true.
 
 </body>
 </html>
-
-

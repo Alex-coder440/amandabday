@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Amanda 💜</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #e6ccff, #f5e6ff);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #4b2e83;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      background: rgba(255,255,255,0.25);
+      backdrop-filter: blur(15px);
+      padding: 40px;
+      border-radius: 25px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      max-width: 700px;
+      animation: fadeIn 2s ease;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin: 15px 0;
+      line-height: 1.6;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 30px;
+      background: #b57edc;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #9d5bd2;
+      transform: scale(1.05);
+    }
+
+    .hidden { display: none; }
+
+    /* Floating hearts & flowers */
+    .float {
+      position: fixed;
+      z-index: 0;
+      pointer-events: none;
+      font-size: 22px;
+      animation: floatUp 7s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(100vh) scale(0.6); }
+      100% { transform: translateY(-10vh) scale(1.2); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .gallery img, .gallery video {
+      width: 100%;
+      border-radius: 15px;
+      object-fit: cover;
+    }
+    
+      </style>
+</head>
+<body>
+
+  <!-- MUSIC -->
+  <audio id="music" autoplay loop>
+    <!-- Replace birthday.mp3 with downloaded Birthday by Katy Perry -->
+    <source src="birthday.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- SCREEN 1 -->
+  <div class="container" id="screen1">
+    <h1>Happy Birthday Amanda 😋💜</h1>
+    <p>Today is just for you…</p>
+    <button onclick="nextScreen(2)">Open Your Surprise ✨</button>
+  </div>
+
+  <!-- SCREEN 2 -->
+  <div class="container hidden" id="screen2">
+    <h1>💌</h1>
+    <p>
+      You’re one of those people that are just so fun to be around…
+      funny without trying, calm without forcing it.
+      <br><br>
+      The kind of person that can reply "exactly" to anything somehow still make it iconic.
+      <br><br>
+      I hope today is filled with alot of movies, alot of sleep,
+      shawarma cravings(Like Mahd), and vanilla ice cream with Oreos "I still remember😅".
+    </p>	
+    <button onclick="nextScreen(3)">There’s More 👀</button>
+  </div>
+
+  <!-- SCREEN 3 — GALLERY -->
+  <div class="container hidden" id="screen3">
+    <h1>✨Birthday Gurl ✨</h1>
+    <p>Little Moments 📸</p>
+
+    <div class="gallery">
+      <!-- REPLACE WITH HER PHOTOS/VIDEOS -->
+      <img src="photo1.jpg">
+      <img src="photo2.jpg">
+      <video src="video1.mp4" autoplay controls></video>
+    </div>
+
+    <button onclick="nextScreen(4)">Final Message ✨</button>
+  </div>
+
+  <!-- SCREEN 4 FINAL -->
+  <div class="container hidden" id="screen4">
+    <h1>Final Birthday Unlock 🎂</h1>
+    <p>
+      So ummm…
+      <br>
+      I didn’t want your birthday to just be another message.
+      I wanted it to feel… intentional.
+      Honestly I'm not so good at poems
+      but anyhow, here it goes
+      <br><br>
+      <b>✍️</b>
+      <br>
+      <i>
+      in the way you laugh, the way you rest,
+      the way you exist without trying too hard.
+   
+      So yeah… this was just a soft way of saying
+      you’re appreciated more than you probably know.
+      <br><br>
+      Happy Birthday 💜
+      </i>
+    </p>
+  </div>
+  
+
+  <script>
+    function nextScreen(screenNumber) {
+      document.querySelectorAll('.container').forEach(el => el.classList.add('hidden'));
+      document.getElementById('screen' + screenNumber).classList.remove('hidden');
+
+      if(screenNumber === 4){
+        createFloating();
+      }
+    }
+
+    function createFloating() {
+      const icons = ['💜','🌸','💖','🌺'];
+
+      for (let i = 0; i < 30; i++) {
+        const el = document.createElement('div');
+        el.classList.add('float');
+        el.innerHTML = icons[Math.floor(Math.random()*icons.length)];
+        el.style.left = Math.random() * 100 + 'vw';
+        el.style.animationDuration = (4 + Math.random() * 4) + 's';
+        document.body.appendChild(el);
+
+        setTimeout(() => el.remove(), 8000);
+      }
+    }
+  </script>
+
+</body>
+</html>
